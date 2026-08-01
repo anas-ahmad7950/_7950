@@ -136,9 +136,9 @@ struct LCA {
         n = _n, timer = 0, LG = __lg(n) + 1;
         assert((1 << (LG - 1)) < N);
  
-        table.resize(n + 1, vector<int>(20));
-        up.resize(n + 1, vector<HashValue>(20));
-        down.resize(n + 1, vector<HashValue>(20));
+        table.resize(n + 1, vector<int>(LG));
+        up.resize(n + 1, vector<HashValue>(LG));
+        down.resize(n + 1, vector<HashValue>(LG));
  
         in.resize(n + 1);
         out.resize(n + 1);
@@ -261,9 +261,9 @@ struct LCA {
         n = _n, timer = 0, LG = __lg(n) + 1;
         assert((1 << (LG - 1)) < N);
 
-        table.resize(n + 1, vector<int>(20));
-        up.resize(n + 1, vector<HashValue>(20));
-        down.resize(n + 1, vector<HashValue>(20));
+        table.resize(n + 1, vector<int>(LG));
+        up.resize(n + 1, vector<HashValue>(LG));
+        down.resize(n + 1, vector<HashValue>(LG));
 
         in.resize(n + 1);
         out.resize(n + 1);
