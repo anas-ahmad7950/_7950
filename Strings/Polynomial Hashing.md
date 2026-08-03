@@ -166,6 +166,7 @@ struct Hashing {
 
     void RHashing(const string &s) {
         for (int i = n; i; --i) HashRev[i] = HashValue::create(s[i - 1]) / HashRev[i + 1];
+        // for (int i = n; i; --i) HashRev[i] = HashRev[i + 1] + HashValue::create(s[i - 1]);
     }
 
     HashValue Nquery(int l, int r) {

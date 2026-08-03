@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Bitwise Identities and Tricks.md",
+                "file": "Strings/Polynomial Hashing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Bitwise Identities and Tricks"
+              "title": "Polynomial Hashing"
             }
           }
         ]
@@ -198,17 +198,17 @@
   },
   "active": "3f26903b428bc97b",
   "lastOpenFiles": [
+    "Strings/Knuth-Morris-Pratt (KMP).md",
+    "Strings/Polynomial Hashing.md",
+    "Bitwise Identities and Tricks.md",
     "Data Structures/Fenwick Tree and Range Fenwick Tree.md",
     "Data Structures/Implicit Treap.md",
     "Data Structures/Persistent Segment Tree.md",
     "Data Structures/Segment Tree.md",
     "Data Structures/Sparse Table.md",
     "Data Structures/XOR Basis.md",
-    "Bitwise Identities and Tricks.md",
     "Convolutions/Fast Fourier Transform (FFT).md",
-    "Strings/Polynomial Hashing.md",
     "Trees/Lowest Common Ancestor (LCA).md",
-    "Strings/Knuth-Morris-Pratt (KMP).md",
     "Geometry/Straight Lines.md",
     "Geometry/Segments.md",
     "Geometry/Geometric Functions.md",
