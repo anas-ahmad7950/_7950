@@ -92,25 +92,76 @@ struct PST {
 
 Template 2: get MEX in range $[l, r]$
 ```cpp
-// Node struct
-static Node merge(const Node &a, const Node &b) {  
-    Node ret;  
-    ret.value = min(a.value, b.value);  
-    return ret;  
-}
-
-// PST struct
-int get_mex(int l, int node, int ms, int me) {  
-    if (ms == me) return ms;  
-    int mn = tree[tree[node].left].value;  
+const int N = 2e5 + 7, MX_NODES = 50 * N;  
+struct Node {  
+    int left, right;  
+    ll value;  
   
-    if (mn < l) return get_mex(l, tree[node].left, ms, mid);  
-    return get_mex(l, tree[node].right, mid + 1, me);  
-}  
+    Node() : left(0), right(0), value(0) {}  
+    static Node merge(const Node &a, const Node &b) {  
+        Node ret;  
+        ret.value = min(a.value, b.value);  
+        return ret;  
+    }  
+} tree[MX_NODES], neutral;  
   
-int get_mex(int l, int verR) {  
-    return get_mex(l, roots[verR], 0, sz - 1);  
-}
+struct PST {  
+#define mid ((ms + me) >> 1)  
+    int sz, ptr;  
+    vector<int> roots;  
+  
+    PST(int _n) {  
+        sz = _n;  
+        ptr = 0;  
+        roots.push_back(build(0, sz - 1));  
+    }  
+  
+    int newnode(ll val) {  
+        Node &ret = tree[ptr++];  
+        ret.left = ret.right = 0;  
+        ret.value = val;  
+        return ptr - 1;  
+    }  
+  
+    int merge(int l, int r) {  
+        Node &ret = tree[ptr++];  
+        Node &a = tree[l];  
+        Node &b = tree[r];  
+        ret = Node::merge(a, b);  
+        ret.left = l;  
+        ret.right = r;  
+        return ptr - 1;  
+    }  
+  
+    int build(int ms, int me) {  
+        if (ms == me) return newnode(-1);  
+        return merge(build(ms, mid), build(mid + 1, me));  
+    }  
+  
+    int update(int idx, ll val, int node, int ms, int me) {  
+        if (ms == me) return newnode(val);  
+        if (idx <= mid) return merge(update(idx, val, tree[node].left, ms, mid), tree[node].right);  
+        return merge(tree[node].left, update(idx, val, tree[node].right, mid + 1, me));  
+    }  
+  
+    void update(int idx, ll val, int ver) {  
+        roots.push_back(update(idx, val, roots[ver], 0, sz - 1));  
+    }  
+  
+    int get_mex(int l, int node, int ms, int me) {  
+        if (ms == me) return ms;  
+        int mn = tree[tree[node].left].value;  
+  
+        if (mn < l) return get_mex(l, tree[node].left, ms, mid);  
+        return get_mex(l, tree[node].right, mid + 1, me);  
+    }  
+  
+    int get_mex(int l, int verR) {  
+        return get_mex(l, roots[verR], 0, sz - 1);  
+    }  
+#undef mid  
+};  
+#define LST_VER (pst.roots.size() - 1)
 
 // Main
 PST pst(n + 7); // elements in pst must be initialized with -1
