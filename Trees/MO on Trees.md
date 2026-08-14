@@ -1,4 +1,4 @@
-
+Template 1
 ```cpp
 const int N = 1e5 + 5, LG = 19, SQ = 300;
 int par[N][LG], id[2 * N], in[N], out[N];
@@ -75,6 +75,7 @@ void preDFS(int node, int p) { // preDFS(1, 0)
     id[timer] = node;
     out[node] = timer++;
 }
+
 bool isPar(int a,int b) { return (in[a] <= in[b] && out[a] >= out[b]); }
 
 int lca(int a,int b) {

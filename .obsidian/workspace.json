@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Strings/Polynomial Hashing.md",
+                "file": "Data Structures/Persistent Segment Tree.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Polynomial Hashing"
+              "title": "Persistent Segment Tree"
             }
           }
         ]
@@ -200,15 +200,18 @@
   "lastOpenFiles": [
     "Strings/Knuth-Morris-Pratt (KMP).md",
     "Strings/Polynomial Hashing.md",
-    "Bitwise Identities and Tricks.md",
-    "Data Structures/Fenwick Tree and Range Fenwick Tree.md",
-    "Data Structures/Implicit Treap.md",
     "Data Structures/Persistent Segment Tree.md",
+    "Trees/Heavy Light Decomposition (HLD).md",
+    "Data Structures/Fenwick Tree and Range Fenwick Tree.md",
+    "Trees/MO on Trees.md",
+    "Trees/Centroid Decomposition.md",
+    "Trees/Lowest Common Ancestor (LCA).md",
+    "Bitwise Identities and Tricks.md",
+    "Data Structures/Implicit Treap.md",
     "Data Structures/Segment Tree.md",
     "Data Structures/Sparse Table.md",
     "Data Structures/XOR Basis.md",
     "Convolutions/Fast Fourier Transform (FFT).md",
-    "Trees/Lowest Common Ancestor (LCA).md",
     "Geometry/Straight Lines.md",
     "Geometry/Segments.md",
     "Geometry/Geometric Functions.md",

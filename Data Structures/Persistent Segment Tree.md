@@ -11,7 +11,7 @@ struct Node {
     ll value;
 
     Node() : left(0), right(0), value(0) {}
-    static Node merge(Node &a, Node &b) {
+    static Node merge(const Node &a, const Node &b) {
         Node ret;
         ret.value = a.value + b.value;
         return ret;
@@ -52,7 +52,8 @@ struct PST {
     }
 
     int update(int idx, ll val, int node, int ms, int me) {
-        if (ms == me) return newnode(val);
+        if (ms == me) return newnode(tree[node].value + val); // add
+        // if (ms == me) return newnode(val); // set
         if (idx <= mid) return merge(update(idx, val, tree[node].left, ms, mid), tree[node].right);
         return merge(tree[node].left, update(idx, val, tree[node].right, mid + 1, me));
     }
@@ -86,4 +87,30 @@ struct PST {
     }
 #undef mid
 };
+#define LST_VER (pst.roots.size() - 1)
+```
+
+Template 2: get MEX in range $[l, r]$
+```cpp
+// PST struct
+int get_mex(int l, int node, int ms, int me) {  
+    if (ms == me) return ms;  
+    int mn = tree[tree[node].left].value;  
+  
+    if (mn < l) return get_mex(l, tree[node].left, ms, mid);  
+    return get_mex(l, tree[node].right, mid + 1, me);  
+}  
+  
+int get_mex(int l, int verR) {  
+    return get_mex(l, roots[verR], 0, sz - 1);  
+}
+
+// Main
+PST pst(n + 7); // elements in pst must be initialized with -1
+vector<int> version(n);  
+for (int i = 0; i < n; ++i) {  
+    if (arr[i] >= n) continue;  
+    pst.update(arr[i], i, LST_VER); // set update
+    version[i] = LST_VER;  
+}
 ```
