@@ -92,6 +92,13 @@ struct PST {
 
 Template 2: get MEX in range $[l, r]$
 ```cpp
+// Node struct
+static Node merge(const Node &a, const Node &b) {  
+    Node ret;  
+    ret.value = min(a.value, b.value);  
+    return ret;  
+}
+
 // PST struct
 int get_mex(int l, int node, int ms, int me) {  
     if (ms == me) return ms;  
